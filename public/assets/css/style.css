@@ -1,0 +1,91 @@
+/* ==========================================================================
+   FantasyXI — "Stat-card" visual identity (indigo/saffron, points-breakdown motif)
+   ==========================================================================
+   Palette:
+     --indigo-ink   #1E1B4B  scoreboard/dark surfaces (nav, ledger cards, hero)
+     --indigo       #4338CA  brand primary (links, primary actions)
+     --saffron      #F0A202  accent -- captain badge, CTAs, positive scoring
+     --canvas       #FAF7F2  page background (warm "scorecard paper")
+     --line         #E7E2F5  hairline borders
+   Type: Teko (condensed display -- scoreboard numerals & headings) / Manrope (body)
+   Signature: the "Points Ledger" -- a dark scoreboard-style receipt that
+   itemizes every scoring rule that fired for a player, dot-matrix textured,
+   ending in a saffron running total. Reused on the manager's per-player
+   breakdown, the admin scoring-run summary, and (in miniature) contest cards.
+   ========================================================================== */
+
+* { box-sizing: border-box; }
+
+h1, h2, h3, h4, .font-display { font-family: 'Teko', 'Manrope', sans-serif; letter-spacing: 0.01em; }
+.tabular-nums { font-variant-numeric: tabular-nums; }
+
+/* ---- scoreboard dot-matrix texture, used behind dark ledger/hero cards --- */
+.scoreboard-texture {
+    background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+    background-size: 10px 10px;
+}
+
+/* ---- nav ------------------------------------------------------------- */
+.nav-link { color: rgba(255,255,255,0.68); transition: background .15s, color .15s; }
+.nav-link:hover { color: #fff; background: rgba(255,255,255,0.08); }
+.nav-link-active { color: #1E1B4B; background: #F0A202; font-weight: 600; }
+
+/* ---- buttons ----------------------------------------------------------- */
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; font-weight: 600; border-radius: .5rem; padding: .55rem 1.1rem; transition: transform .1s, box-shadow .15s, background .15s; white-space: nowrap; }
+.btn:active { transform: translateY(1px); }
+.btn-primary { background: #4338CA; color: #fff; }
+.btn-primary:hover { background: #362FA0; }
+.btn-saffron { background: #F0A202; color: #1E1B33; }
+.btn-saffron:hover { background: #C97F0A; color: #fff; }
+.btn-ghost { background: #fff; color: #1E1B33; border: 1px solid #E7E2F5; }
+.btn-ghost:hover { border-color: #4338CA; color: #4338CA; }
+.btn-danger { background: #FDE8EC; color: #B0123B; }
+.btn-danger:hover { background: #FBD4DC; }
+.btn-sm { padding: .35rem .7rem; font-size: .8rem; }
+
+/* ---- cards --------------------------------------------------------------*/
+.card { background: #fff; border: 1px solid #E7E2F5; border-radius: .75rem; }
+.stat-card {
+    background: linear-gradient(155deg, #1E1B4B 0%, #2C2778 100%);
+    color: #fff;
+    border-radius: .9rem;
+    position: relative;
+    overflow: hidden;
+}
+.stat-card .stat-value { font-family: 'Teko', sans-serif; font-size: 2.75rem; line-height: 1; color: #F0A202; }
+.stat-card .stat-label { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: rgba(255,255,255,0.65); }
+
+/* ---- franchise chip -------------------------------------------------- */
+.franchise-chip { display: inline-flex; align-items: center; gap: .35rem; padding: .2rem .6rem; border-radius: 999px; font-weight: 700; font-size: .72rem; letter-spacing: .03em; }
+
+/* ---- role badge -------------------------------------------------------- */
+.role-badge { display: inline-flex; padding: .12rem .55rem; border-radius: 999px; font-size: .7rem; font-weight: 700; border-width: 1px; }
+
+/* ---- points ledger (signature element) --------------------------------- */
+.ledger {
+    background: linear-gradient(165deg, #1E1B4B 0%, #262166 100%);
+    border-radius: .9rem;
+    color: #fff;
+    padding: 1.25rem 1.25rem 1rem;
+}
+.ledger-row { display: flex; justify-content: space-between; gap: 1rem; padding: .4rem 0; border-bottom: 1px dashed rgba(255,255,255,0.12); font-size: .875rem; }
+.ledger-row:last-child { border-bottom: none; }
+.ledger-row .pts-pos { color: #6EE7B7; font-family: 'Teko', sans-serif; font-size: 1.05rem; }
+.ledger-row .pts-neg { color: #FCA5A5; font-family: 'Teko', sans-serif; font-size: 1.05rem; }
+.ledger-total { display: flex; justify-content: space-between; align-items: baseline; margin-top: .6rem; padding-top: .75rem; border-top: 2px solid rgba(240,162,2,0.5); }
+.ledger-total .value { font-family: 'Teko', sans-serif; font-size: 2.4rem; color: #F0A202; line-height: 1; }
+
+/* ---- credit gauge -------------------------------------------------------*/
+.credit-gauge-track { position: relative; height: .85rem; border-radius: 999px; background: #EEECFB; overflow: hidden; border: 1px solid #DEDAF6; }
+.credit-gauge-fill { height: 100%; border-radius: 999px; background: linear-gradient(90deg, #4338CA 0%, #F0A202 100%); transition: width .2s ease; }
+.credit-gauge-fill.over { background: #DC2626; }
+
+/* ---- countdown pill ------------------------------------------------------*/
+.pill { display: inline-flex; align-items: center; padding: .2rem .65rem; border-radius: 999px; font-size: .72rem; font-weight: 700; }
+.pill-open { background: #DCFCE7; color: #036B37; }
+.pill-soon { background: #FEF3C7; color: #92400E; }
+.pill-locked { background: #F1F5F9; color: #475569; }
+.pill-completed { background: #EEECFB; color: #362FA0; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { scrollbar-width: none; }
